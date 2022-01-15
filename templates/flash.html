@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Flash Test</title>
+    </head>
+    <body>
+        {% with messages = get_flashed_messages() %}
+            {% if success in messages %}
+                <p>success is true</p>
+            {% endif %}
+        {% endwith %}
+        <p>flash</p>
+    </body>
+</html>

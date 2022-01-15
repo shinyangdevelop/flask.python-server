@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Steve</title>
+    </head>
+    <body>
+        <h1>Steve</h1>
+        <form action="/welcome" method="post">
+            <input type="text" name="name">
+            <input type="submit" name="welcome_button">
+        </form>
+
+        <br>
+        <br>
+
+        <form action="/" method="post">
+            <input type="text" name="value" required="required"><br>
+            Success: <input type="checkbox" name="is_success"><br>
+            <input type="submit" name="flash_button" value="flash"><br>
+            <input type="submit" name="reset_flash" value="reset flash">
+        </form>
+
+        <br>
+        <br>
+
+        {% with messages = get_flashed_messages()%}
+            <p>{{messages}}</p>
+        {% endwith %}
+    </body>
+</html>
