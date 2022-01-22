@@ -34,7 +34,7 @@ def register():
         try:
             hash = pbkdf2_sha256.hash(request.form.get['password'])
             cursor.execute('INSERT INTO Users (Name, Email, PasswordHash, DisplayName) ("{0}", "{1}", "{2}", "{3}")'.format(request.form['name'], request.form['email'], hash, request.form['displayname']))
-            return cursor.execute(f'SELECT * from Users where Name = "${request.form.get()}")
+            return cursor.execute(f'SELECT * from Users where Name = "${request.form.get()}')
         except:
             return '<!DOCTYPE html><html><head><title>Wrong password</title><meta charset="utf-8"></head><body><h1>Duplicated Name</h1><p>You have duplicated name with other user. please change your name, or username, and try again.</p></body></html>'
     elif request.method == 'GET':
