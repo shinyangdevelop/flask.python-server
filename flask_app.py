@@ -33,7 +33,7 @@ def register():
             return '<!DOCTYPE html><html><head><title>Wrong password</title><meta charset="utf-8"></head><body><h1>Wrong Password</h1><p>please input your password again</p></body></html>'
         try:
             hash = pbkdf2_sha256.hash(request.form.get['password'])
-            cursor.execute(f"INSERT INTO Users (Name, Email, PasswordHash, DisplayName) (\"${request.form.get('name')}\", \"${hash}\", \"${request.form.get('email')\", \"${request.form.get('displayname')\")")
+            cursor.execute('INSERT INTO Users (Name, Email, PasswordHash, DisplayName) ("{0}", "{1}", "{2}", "{3}")'.format(request.form['name'], request.form['email'], hash, request.form['displayname']))
             return cursor.execute(f'SELECT * from Users where Name = "${request.form.get()}")
         except:
             return '<!DOCTYPE html><html><head><title>Wrong password</title><meta charset="utf-8"></head><body><h1>Duplicated Name</h1><p>You have duplicated name with other user. please change your name, or username, and try again.</p></body></html>'
